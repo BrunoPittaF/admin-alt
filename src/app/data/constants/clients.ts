@@ -8,6 +8,7 @@ export const clients: IClient[] = [
     dateSale: '11-06-2024',
     dateSend: '12-06-2024',
     price: '50',
-    statusSale: 'pedido feito'
+    statusSale: 'pedido feito',
+    payFull: false
   }
 ]
