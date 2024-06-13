@@ -1,0 +1,14 @@
+.listClients {
+  margin-top: 20px;
+}
+
+.headerListClients {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.headerListClients li {
+  width: 130px;
+  font-weight: bold;
+}

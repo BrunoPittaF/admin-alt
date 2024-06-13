@@ -1,0 +1,27 @@
+.lineClient {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style-type: none;
+  margin: 15px 0px;
+  cursor: pointer;
+  padding: 5px 0px;
+}
+
+.lineClient:hover {
+  background-color: rgb(53, 53, 53);
+  color: white;
+}
+
+.lineClient span {
+  width: 130px;
+}
+
+.editClientButton {
+  border: none;
+  background-color: #1976d2;
+  padding: 8px 5px;
+  border-radius: 4px;
+  color: white;
+  margin-right: 5px;
+}
