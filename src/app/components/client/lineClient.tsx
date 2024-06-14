@@ -17,7 +17,11 @@ export default function LineClient(props: lineClientProps) {
       {props.isMobile ? (
         <>
           <div
-            style={props.client.statusSale === 'entregue' || 'Entregue' ? { backgroundColor: '#28a745' } : {}}
+            style={
+              props.client.statusSale === 'entregue' || props.client.statusSale === 'Entregue'
+                ? { backgroundColor: '#28a745' }
+                : { backgroundColor: 'transparent' }
+            }
             className={styles.lineMobile}
           >
             <p onClick={() => openMessageWhatsapp(props.client.clientNumber)}>
@@ -65,7 +69,11 @@ export default function LineClient(props: lineClientProps) {
         </>
       ) : (
         <div
-          style={props.client.statusSale === 'entregue' || 'Entregue' ? { backgroundColor: '#28a745' } : {}}
+          style={
+            props.client.statusSale === 'entregue' || props.client.statusSale === 'Entregue'
+              ? { backgroundColor: '#28a745' }
+              : { backgroundColor: 'transparent' }
+          }
           className={styles.lineClient}
         >
           <span onClick={() => openMessageWhatsapp(props.client.clientNumber)}>
