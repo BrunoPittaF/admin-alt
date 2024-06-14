@@ -20,7 +20,7 @@ export default function LineClient(props: lineClientProps) {
             style={
               props.client.statusSale === 'entregue' || props.client.statusSale === 'Entregue'
                 ? { backgroundColor: '#28a745' }
-                : { backgroundColor: 'transparent' }
+                : {}
             }
             className={styles.lineMobile}
           >
@@ -72,7 +72,7 @@ export default function LineClient(props: lineClientProps) {
           style={
             props.client.statusSale === 'entregue' || props.client.statusSale === 'Entregue'
               ? { backgroundColor: '#28a745' }
-              : { backgroundColor: 'transparent' }
+              : {}
           }
           className={styles.lineClient}
         >
