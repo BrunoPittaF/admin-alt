@@ -1,5 +1,5 @@
 export interface IClient {
-  id: string,
+  id: number,
   clientNumber: string,
   descriptionSale: string,
   dateSale: string,

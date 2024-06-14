@@ -11,7 +11,8 @@ import { useState } from 'react';
 
 export default function Home() {
   const [showHeader, setShowHeader] = useState<Boolean>(false);
-  const { client, listClients, cancel, deleteClient, changeClient, saveForm, isHome } = useClients();
+  const { client, listClients, cancel, deleteClient, changeClient, saveForm, isHome, editForm } =
+    useClients();
 
   return (
     <main className={styles.main}>
@@ -45,6 +46,7 @@ export default function Home() {
             client={client}
             onChange={changeClient}
             onSave={saveForm}
+            onEdit={editForm}
           />
         ) : (
           <>

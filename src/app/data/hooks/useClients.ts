@@ -1,4 +1,3 @@
-import Backend from '@/api';
 import { IClient } from '@/core/model/Client';
 import { useEffect, useState } from 'react';
 
@@ -10,8 +9,27 @@ export default function useClients() {
   async function saveForm() {
     if (!client) return;
     // salvar no banco de dados
-    await Backend.clients.saveClient(client);
-    const clients = await Backend.clients.getClients();
+    // await Backend.clients.saveClient(client);
+    await fetch('/api/client', {
+      method: 'POST',
+      body: JSON.stringify(client)
+    })
+    const response = await fetch('/api/client');
+    const clients = await response.json()
+    setListClients(clients);
+    setClient(null);
+  }
+
+  async function editForm() {
+    if (!client) return;
+    // salvar no banco de dados
+
+    await fetch('/api/client', {
+      method: 'PUT',
+      body: JSON.stringify(client)
+    })
+    const response = await fetch('/api/client');
+    const clients = await response.json()
     setListClients(clients);
     setClient(null);
   }
@@ -19,14 +37,27 @@ export default function useClients() {
   async function deleteClient() {
     if (!client || !client.id) return;
     // salvar no banco de dados
-    await Backend.clients.deleteClient(client.id!);
-    const clients = await Backend.clients.getClients();
+    await fetch('/api/client', {
+      method: 'DELETE',
+      body: JSON.stringify({ id: client.id })
+    })
+    const response = await fetch('/api/client');
+    const clients = await response.json()
     setListClients(clients);
     setClient(null);
   }
 
+  function changeClient(client: Partial<IClient> | null) {
+    setClient(client);
+  }
+
   useEffect(() => {
-    Backend.clients.getClients().then(setListClients);
+    async function getAllClients() {
+      const response = await fetch('/api/client');
+      const clients = await response.json()
+      setListClients(clients)
+    }
+    getAllClients()
   }, []);
 
   useEffect(() => {
@@ -38,12 +69,13 @@ export default function useClients() {
   }, [client])
 
   return {
+    editForm,
     isHome,
     listClients,
     client,
     saveForm,
     deleteClient,
     cancel: () => setClient(null),
-    changeClient: (client: Partial<IClient> | null) => setClient(client)
+    changeClient
   }
 }

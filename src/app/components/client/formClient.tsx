@@ -1,6 +1,8 @@
 import { IClient } from '@/core/model/Client';
 import Input from '../shared/Input';
 import styles from '@/app/formClient.module.css';
+import useClients from '@/app/data/hooks/useClients';
+import { useEffect } from 'react';
 
 export interface IFormClientProps {
   client: Partial<IClient>;
@@ -8,6 +10,7 @@ export interface IFormClientProps {
   onSave: () => void;
   cancel: () => void;
   delete: () => void;
+  onEdit: () => void;
 }
 
 export default function FormClient(props: IFormClientProps) {
