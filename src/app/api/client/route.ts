@@ -26,7 +26,8 @@ export async function POST(req: Request) {
       });
       return Response.json({ message: "OK", client })
     } else {
-
+      let localPayFull;
+      payFull ? localPayFull = true : localPayFull = false;
       const client = await prisma.client.create({
         data: {
           clientNumber,
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
           dateSend,
           price,
           statusSale,
-          payFull
+          payFull: localPayFull
         }
       });
       return Response.json({ message: "OK", client })

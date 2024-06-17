@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 export default function useClients() {
   const [isHome, setIsHome] = useState<boolean>(false);
   const [listClients, setListClients] = useState<IClient[]>([]);
-  const [client, setClient] = useState<Partial<IClient> | null>({});
+  const [client, setClient] = useState<Partial<IClient> | null>({
+    payFull: false
+  });
 
   async function saveForm() {
     if (!client) return;
